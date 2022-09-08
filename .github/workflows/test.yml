@@ -1,13 +1,24 @@
-name: RSpec
+name: Test
 
 on: [pull_request]
 jobs:
-  test:
+  test: &test
     name: Actions Test 1
     runs-on: ubuntu-latest
+    env: &envs
+      AAA: Hello
+      BBB: World
+      CCC: Foo
     steps:
       - name: Check out code
         uses: actions/checkout@v2
       - name: Run
         run: |
+          echo d: "$CCC"
           cat -n README.md
+  test2: 
+    name: Actions Test 2
+    <<: *test
+    env:
+      <<: *envs
+      CCC: Bar
