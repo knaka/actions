@@ -1,0 +1,13 @@
+name: RSpec
+
+on: [pull_request]
+jobs:
+  test:
+    name: Actions Test 1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run
+        run: |
+          cat -n README.md
