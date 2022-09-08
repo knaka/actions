@@ -1,6 +1,7 @@
 name: Test
 
-on: [push, pull_request]
+on: 
+  - pull_request
 
 jobs:
   test: &test
@@ -17,9 +18,9 @@ jobs:
         run: |
           echo d: "$CCC"
           cat -n README.md
-  test2: 
-    name: Actions Test 2
-    <<: *test
-    env:
-      <<: *envs
-      CCC: Bar
+  # test2: 
+  #   name: Actions Test 2
+  #   <<: *test
+  #   env:
+  #     <<: *envs
+  #     CCC: Bar
