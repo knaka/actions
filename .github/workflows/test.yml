@@ -1,0 +1,29 @@
+# こんど試す
+# 雪猫.yml on Twitter: "@knaka なんか前試したとき windows-2022 だけめっちゃ遅かった気がします windows-2019 にするとマシになるかも" / Twitter https://twitter.com/snow_cait/status/1571035304370507777
+
+name: Test
+
+on: 
+  - pull_request
+
+jobs:
+  test: &test
+    name: Actions Test 1
+    runs-on: ubuntu-latest
+    env: &envs
+      AAA: Hello
+      BBB: World
+      CCC: Foo
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Run
+        run: |
+          echo d: "$CCC"
+          cat -n README.md
+  test2: 
+    name: Actions Test 2
+    <<: *test
+    env:
+      <<: *envs
+      CCC: Bar
